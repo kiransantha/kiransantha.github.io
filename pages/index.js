@@ -2,7 +2,7 @@ export default function Home() {
   return (
     <div>
       <h1>
-        Kiransai santha
+        Kiran sai santha
       </h1>
     </div>
   )
