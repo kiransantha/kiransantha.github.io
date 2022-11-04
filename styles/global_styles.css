@@ -14,7 +14,12 @@
 }
 
 body {
+	background: var(--cw);
 	-webkit-font-smoothing: antialiased;
+}
+
+a:hover {
+	cursor: pointer;
 }
 
 ::selection {
