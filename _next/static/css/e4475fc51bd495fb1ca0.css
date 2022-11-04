@@ -1,0 +1,1 @@
+:root{--cmb:#0b74fd;--clb:#00bffe;--cdg:#0d4c3c;--cdr:#981f29;--cw:#fefefe;--cg:#656c7b;--cdb:#0e172f}*{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;margin:0}body{background:var(--cw);-webkit-font-smoothing:antialiased}a:hover{cursor:pointer}::-moz-selection{background:var(--cw);color:var(--cdb)}::selection{background:var(--cw);color:var(--cdb)}
