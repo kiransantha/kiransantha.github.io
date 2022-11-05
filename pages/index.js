@@ -1,6 +1,9 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+
+import Header from '../components/Header.js';
+import CardLayout from '../components/CardLayout.js';
 
 const cmb = '#0b74fd', clb = '#00bffe', cdg = '#0d4c3c',  cdr = '#981f29';
 const cw = '#fefefe', cg = '#656c7b', cdb = '#0e172f';
@@ -14,9 +17,58 @@ const home_page_url = 'https://kiransantha.github.io/';
 const description = "Kiran Sai Santa";
 
 export default function Home() {
-  const projec_dirs = [''];
   const [selectedCategory, setSelectedCategory] = useState(0);
-  const category_names = ['All Projects', 'Interior', 'Exterior', 'Animation'];
+  const categoryNames = ['All Projects', 'Interior', 'Exterior', 'Animation'];
+
+  const projectObjs = [
+    {
+      name: 'contemporary-workspace', 
+      categoryId: 2, 
+      imgName: 'pic.png', 
+      title: 'Contemporary Workspace',
+      usedTools: ['SketchUp', 'Grasshopper'],
+    },
+    
+    {
+      name: 'curvy-entrance', 
+      categoryId: 3, 
+      imgName: '4.png',
+      title: 'Cury Entrance',
+      usedTools: ['Revit', 'V-Ray'],
+    },
+    
+    {
+      name: 'dolphin-facade', 
+      categoryId: 2, 
+      imgName: 'house.png',
+      title: "Dolphin Facde",
+      usedTools: ['3D Studio Max'],
+    },
+    
+    {
+      name: 'exterior-works', 
+      categoryId: 1, 
+      imgName: 'capture.png',
+      title: 'Exterior Works',
+      usedTools: ['V-Ray', 'SketchUp'],
+    },
+    
+    {
+      name: 'massive-hall', 
+      categoryId: 3, 
+      imgName: 'house 2.png',
+      title: 'Massive Hall',
+      usedTools: ['3D Studio Max', 'Revit'],
+    },
+    
+    {
+      name: 'mini-resort', 
+      categoryId: 2, 
+      imgName: '1.png',
+      title: 'Mini Resort',
+      usedTools: ['BIM', 'Grasshopper'],
+    },
+  ]
 
   return (
     <div>
@@ -31,6 +83,8 @@ export default function Home() {
       </Head>
       
       <div>
+        <Header />
+
         {/* Header section */}
         <div className='header-info'>
           <div className='profile-section'>
@@ -56,10 +110,13 @@ export default function Home() {
           <p className='portfolio-heading'>3D VISUALIZATION PORTFOLIO</p>
           {/* Portfolio section categories */}
           <div className='portfolio-section-categories'>
-            {category_names.map((name, index) => {
+            {categoryNames.map((name, index) => {
                 return (
-                  <a className='portfolio-category-text'
-                    style={{color: selectedCategory==index? portfolio_category_text_active:portfolio_category_text}}
+                  <a key = {index}
+                    className='portfolio-category-text'
+                    style={{
+                      color: selectedCategory==index? portfolio_category_text_active:portfolio_category_text,
+                    }}
                     onClick={(event)=>setSelectedCategory(index)}>
                     {name}
                   </a>
@@ -68,6 +125,11 @@ export default function Home() {
             )}
           </div>
         </div>
+
+        {/*Portfolio Card layout*/}
+        <CardLayout projectObjs={projectObjs}
+          currentId={selectedCategory} 
+        />
 
       </div>
 
@@ -81,6 +143,7 @@ export default function Home() {
           flex: 100%;
           flex-direction: row;
           padding: 2vh 0vw 1vh 0vw;
+          margin-top: 10vh;
         }
 
         .profile-section {
@@ -142,7 +205,7 @@ export default function Home() {
           display: flex;
           flex: 100%;
           flex-direction: column;
-          padding: 2vh 10% 1vh 10%;
+          padding: 2vh 5% 1vh 5%;
         }
 
         .portfolio-heading {
@@ -165,7 +228,7 @@ export default function Home() {
           font-family: 'Source Sans Pro', sans-serif;
           font-size: 1.5em;
           text-decoration: none;
-          padding: 0 2% 0 2%;
+          margin: 0 2% 0 2%;
         }
 
         .portfolio-category-text:hover {
@@ -175,6 +238,15 @@ export default function Home() {
         .portfolio-category-text:active {
           color: ${portfolio_category_text_active};
         }
+
+        .portfolio-card-layout {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          margin: 1vh 10vw 1vh 10vw;
+        }
+
+        .
       `}</style>
     </div>
   )

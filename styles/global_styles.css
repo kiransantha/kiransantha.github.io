@@ -16,6 +16,7 @@
 body {
 	background: var(--cw);
 	-webkit-font-smoothing: antialiased;
+	min-height: 120vh;
 }
 
 a:hover {
